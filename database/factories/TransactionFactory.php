@@ -20,6 +20,8 @@ class TransactionFactory extends Factory
 
         return [
             'user_id' => 1,
+            'payee_id' => 1,
+            'payment_ref' => fake()->creditCardNumber(),
             'name' => fake()->name(),
             'description' => '',
             'debit' => $isCredit ? 0 : 100,
