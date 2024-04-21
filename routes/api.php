@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('users', \App\Http\Controllers\UserController::class);
+Route::post('stkPush', [\App\Http\Controllers\TransactionController::class, 'stkPush']);
