@@ -2,11 +2,13 @@
 
 namespace App\View\Components;
 
+use App\Models\Transaction;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class RecentActivity extends Component
+class RecentTransactions extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +23,7 @@ class RecentActivity extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.recent-transactions');
+        $transactions = Transaction::where('user_id', Auth::id())->get();
+        return view('components.recent-transactions')->with('transactions', $transactions);
     }
 }
