@@ -2,8 +2,10 @@
 
 namespace App\View\Components;
 
+use App\Models\Budget;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class BudgetSection extends Component
@@ -21,6 +23,7 @@ class BudgetSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.budget-section');
+        $budgets = Budget::where('user_id', Auth::id())->get();
+        return view('components.budget-section')->with('budgets', $budgets);
     }
 }

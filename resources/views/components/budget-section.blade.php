@@ -9,9 +9,9 @@
       </div>
 
       <div class="relative w-full flex gap-4 py-3 overflow-x-auto ml-3">
-        <x-budget-item />
-        <x-budget-item />
-        <x-budget-item />
+        @foreach ( $budgets as $budget )
+          <x-budget-item :budget="$budget"/>
+        @endforeach
       </div>
     </div>
   </div>
