@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('home');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
