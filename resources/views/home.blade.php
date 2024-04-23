@@ -34,4 +34,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // The balance modal
+        const balanceModal = document.getElementById('balance-modal');
+        const balanceCard = document.getElementById('balance-card');
+        const balanceClose = document.getElementById('balance-close-button');
+    
+        balanceClose.addEventListener('click', function() {
+            balanceModal.classList.add('hidden');
+        });
+        balanceCard.addEventListener('click', function() {
+            balanceModal.classList.toggle('hidden');
+        });
+
+        // The transaction modal
+        const transactionModal = document.getElementById('transaction-modal');
+        const addIcon = document.getElementById('add-icon');
+        const transactionClose = document.getElementById('transaction-close-button');
+    
+        transactionClose.addEventListener('click', function() {
+            transactionModal.classList.add('hidden');
+        });
+        addIcon.addEventListener('click', function() {
+            transactionModal.classList.toggle('hidden');
+        });
+    </script>
 </x-app-layout>
