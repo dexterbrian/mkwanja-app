@@ -7,7 +7,7 @@
     <div class="m-6 flex flex-col justify-center h-screen">
         <form class="bg-white dark:bg-gray-800 p-6 rounded shadow-lg" method="POST" action="{{ url('/api/stkPush') }}">
             @csrf
-            <h2 class="text-lg font-semibold mb-4 dark:text-white">Enter Amount and Phone Number</h2>
+            <h2 class="text-lg font-semibold mb-4 dark:text-white">Top Up Your Account</h2>
             <input name="amount" type="text" placeholder="Amount" class="w-full border border-gray-200 rounded p-2 mb-4">
             <input name="phone" type="text" placeholder="Phone Number" class="w-full border border-gray-200 rounded p-2 mb-4">
             <input type="submit" class="bg-blue-500 text-white rounded p-2" value="Submit">
