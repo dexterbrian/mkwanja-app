@@ -42,20 +42,21 @@
             </div>
 
             <!-- Payee Type: phone number, paybill or till -->
-            <div class="mt-2 grid grid-cols-3 gap-2 text-gray-900 dark:text-white">
-                <div class="flex items-center">
-                    <input type="checkbox" name="payeeType[]" id="payeeType-phone" value="phone" class="ml-2 mr-2 rounded">
+            <fieldset class="mt-2 text-gray-900 dark:text-white flex flex-row">
+                <legend class="text-sm">Payee Type</legend>
+                <div class="mt-2 ml-7">
+                    <input type="radio" name="payeeType" id="payeeType-phone" value="phone" class="ml-2 mr-2 rounded" required>
                     <label for="payeeType-phone" class="text-sm">Phone</label>
                 </div>
-                <div class="flex items-center">
-                    <input type="checkbox" name="payeeType[]" id="payeeType-paybill" value="paybill" class="mr-2 rounded">
+                <div class="mt-2 ml-7">
+                    <input type="radio" name="payeeType" id="payeeType-paybill" value="paybill" class="ml-2 mr-2 rounded" required>
                     <label for="payeeType-paybill" class="text-sm">Paybill</label>
                 </div>
-                <div class="flex items-center">
-                    <input type="checkbox" name="payeeType[]" id="payeeType-till" value="till" class="mr-2 rounded">
+                <div class="mt-2 ml-7">
+                    <input type="radio" name="payeeType" id="payeeType-till" value="till" class="ml-2 mr-2 rounded" required>
                     <label for="payeeType-till" class="text-sm">Till</label>
                 </div>
-            </div>
+            </fieldset>
             <x-input-error :messages="$errors->get('payeeType')" class="mt-2" />
 
             <!-- Account number -->
