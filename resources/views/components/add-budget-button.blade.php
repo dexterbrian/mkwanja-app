@@ -4,14 +4,69 @@
     </svg>
 </div>
 
+{{-- fields: budget name, payee name, paybill or till, amount --}}
 <div id="transaction-modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-10">
     <div class="m-6 flex flex-col justify-center h-screen">
         <form class="bg-white dark:bg-gray-800 p-6 rounded shadow-lg" method="POST" action="{{ url('/api/stkPush') }}">
             @csrf
-            <h2 class="text-lg font-semibold mb-4 dark:text-white">Enter Amount and Phone Number</h2>
-            <input name="amount" type="text" placeholder="Amount" class="w-full border border-gray-200 rounded p-2 mb-4">
-            <input name="phone" type="text" placeholder="Phone Number" class="w-full border border-gray-200 rounded p-2 mb-4">
-            <input type="submit" class="bg-blue-500 text-white rounded p-2" value="Submit">
+            <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Create Budget Item</h2>
+
+            <!-- Budget name -->
+            <div>
+                <x-text-input id="budgetItemName" class="block mt-1 w-full" type="text" name="budgetItemName" placeholder="Budget Item Name" required autofocus />
+                <x-input-error :messages="$errors->get('budgetItemName')" class="mt-2" />
+            </div>
+
+            <!-- Payee name -->
+            <div>
+                <x-text-input id="payeeName" class="block mt-1 w-full" type="text" name="payeeName" placeholder="Payee Name" required />
+                <x-input-error :messages="$errors->get('payeeName')" class="mt-2" />
+            </div>
+
+            <!-- Amount -->
+            <div>
+                <x-text-input id="amount" class="block mt-1 w-full" type="number" name="amount" placeholder="Budget Amount" required />
+                <x-input-error :messages="$errors->get('payeeName')" class="mt-2" />
+            </div>
+            
+            <!-- Budget Description -->
+            <div>
+                <x-text-input id="budgetDescription" class="block mt-1 w-full" type="text" name="budgetDescription" placeholder="Budget Description" required />
+                <x-input-error :messages="$errors->get('budgetDescription')" class="mt-2" />
+            </div>
+
+            <!-- Payee number -->
+            <div>
+                <x-text-input id="payeeNumber" class="block mt-1 w-full" type="number" name="payeeNumber" placeholder="Phone Number or Mpesa Paybill or Till" required />
+                <x-input-error :messages="$errors->get('payeeNumber')" class="mt-2" />
+            </div>
+
+            <!-- Payee Type: phone number, paybill or till -->
+            <div class="mt-2 grid grid-cols-3 gap-2 text-gray-900 dark:text-white">
+                <div class="flex items-center">
+                    <input type="checkbox" name="payeeType[]" id="payeeType-phone" value="phone" class="ml-2 mr-2 rounded">
+                    <label for="payeeType-phone" class="text-sm">Phone</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" name="payeeType[]" id="payeeType-paybill" value="paybill" class="mr-2 rounded">
+                    <label for="payeeType-paybill" class="text-sm">Paybill</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" name="payeeType[]" id="payeeType-till" value="till" class="mr-2 rounded">
+                    <label for="payeeType-till" class="text-sm">Till</label>
+                </div>
+            </div>
+            <x-input-error :messages="$errors->get('payeeType')" class="mt-2" />
+
+            <!-- Account number -->
+            <div class="my-2">
+                <x-text-input id="accountNumber" class="block mt-1 w-full" type="number" name="accountNumber" placeholder="Account Number" />
+                <x-input-error :messages="$errors->get('accountNumber')" class="mt-2" />
+            </div>
+
+            {{-- <input name="amount" type="text" placeholder="Amount" class="w-full border border-gray-200 rounded p-2 mb-4">
+            <input name="phone" type="text" placeholder="Phone Number" class="w-full border border-gray-200 rounded p-2 mb-4"> --}}
+            <input type="submit" class="bg-blue-500 text-white rounded p-2 mr-2" value="Save Budget">
             <button type="button" id="transaction-close-button" class="bg-red-500 text-white rounded p-2">Close</button>
         </form>
     </div>
